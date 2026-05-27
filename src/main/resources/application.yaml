@@ -1,3 +1,18 @@
+# yaml-language-server: $schema=none
 spring:
   application:
     name: portfolio-base
+
+  # PostgreSQL Database Connection Settings
+  datasource:
+    url: jdbc:postgresql://localhost:5432/autoteiledb
+    username: hector
+    password: bunkersecret
+    driver-class-name: org.postgresql.Driver
+
+  # JPA / Hibernate Settings for PostgreSQL
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true

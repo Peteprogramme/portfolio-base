@@ -1,0 +1,48 @@
+### Test GET All Parts
+GET http://localhost:8080/api/parts
+
+### Test GET Critical Stock
+GET http://localhost:8080/api/parts/critical
+
+### Test POST Create New Part
+POST http://localhost:8080/api/parts
+Content-Type: application/json
+
+{
+  "sku": "DE-HELLA-3312Q",
+  "name": "LED Matrix Headlight Assembly (Scheinwerfer)",
+  "manufacturer": "Hella",
+  "stockQuantity": 45,
+  "minimumRequired": 15,
+  "priceEuro": 450.00
+}
+
+### Update an existing auto part (Assuming ID 1 exists from previous tests)
+PUT http://localhost:8080/api/parts/1
+Content-Type: application/json
+
+{
+"name": "Brake Pads - Premium Ceramic",
+"sku": "BRK-CER-001",
+"stockQuantity": 150,
+"minimumRequired": 20,
+"manufacturer": "Brembo"
+}
+
+### Attempt to update a non-existent part (Testing our defensive 404 response)
+PUT http://localhost:8080/api/parts/999
+Content-Type: application/json
+
+{
+  "name": "Ghost Part",
+  "sku": "GST-000",
+  "stockQuantity": 10,
+  "minimumRequired": 5,
+  "manufacturer": "Unknown"
+}
+
+### Delete an existing auto part (Assuming ID 1 is still there)
+DELETE http://localhost:8080/api/parts/1
+
+### Attempt to delete a non-existent auto part
+DELETE http://localhost:8080/api/parts/999
